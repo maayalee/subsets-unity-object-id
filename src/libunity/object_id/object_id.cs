@@ -11,8 +11,7 @@ namespace libunity.object_id {
     const int INCREMENT_COUNT_BYTE = 2;
     const int TOTAL_BYTE = 12;
 
-    public object_id(counter counter) {
-      this.counter = counter;
+    public void init(counter counter) {
       int count = counter.inc();
 
       binary = new byte[TOTAL_BYTE];
@@ -31,7 +30,7 @@ namespace libunity.object_id {
       Debug.Log(get_timestamp()); 
     }
 
-    override public void init_by_string(string hex) {
+    public void init_by_string(string hex) {
       binary = new byte[hex.Length / 2];
       for (int i = 0; i < hex.Length; i += 2) {
         binary[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
@@ -78,10 +77,18 @@ namespace libunity.object_id {
       return BitConverter.ToUInt32(binary, 0);
     }
 
-    private counter counter;
+    private byte[] binary;
 
     public static object_id create(counter counter) {
-      return new object_id(counter);
+      object_id result = new object_id();
+      result.init(counter);
+      return result;
+    }
+
+    public static object_id create_with_string(string hex) {
+      object_id result = new object_id();
+      result.init_by_string(hex);
+      return result;
     }
   }
 }
