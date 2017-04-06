@@ -10,15 +10,19 @@ namespace libunity.object_id {
     const int PROCESS_ID_BYTE = 2;
     const int INCREMENT_COUNT_BYTE = 2;
     const int TOTAL_BYTE = 12;
+    const int MAX_INCREMENT_COUNT_PER_SEC = 65535;
 
     public object_id(counter counter) {
       int count = counter.inc();
+      if (count >= MAX_INCREMENT_COUNT_PER_SEC) {
+        throw new Exception("increment is overflow");
+      }
 
       binary = new byte[TOTAL_BYTE];
       append_timestamp(counter.get_last_inc_time());
       append_machine_id();
       append_process_id();
-      append_increment_count(count);       
+      append_increment_count(Convert.ToUInt16(count));
     }
 
     public object_id(string hex) {
@@ -45,8 +49,8 @@ namespace libunity.object_id {
       return cache_string;
     }
 
-    private void append_timestamp(double time) {
-      byte[] bytes = BitConverter.GetBytes(Convert.ToUInt32(time));
+    private void append_timestamp(uint time) {
+      byte[] bytes = BitConverter.GetBytes(time);
       Array.Copy(bytes, 0, binary, index, TIMESTAMP_BYTE);
       index += TIMESTAMP_BYTE;
     }
@@ -64,8 +68,8 @@ namespace libunity.object_id {
       index += PROCESS_ID_BYTE;
     }
 
-    private void append_increment_count(int count) {
-      byte[] bytes = BitConverter.GetBytes(Convert.ToUInt16(count));
+    private void append_increment_count(ushort count) {
+      byte[] bytes = BitConverter.GetBytes(count);
       Array.Copy(bytes, 0, binary, index, INCREMENT_COUNT_BYTE);
       index += INCREMENT_COUNT_BYTE;
     }

@@ -2,8 +2,7 @@
 
 namespace libunity.object_id {
   abstract public class counter {
-    public counter(int max_increment_count) {
-      this.max_increment_count = max_increment_count;
+    public counter() {
     }
 
     abstract protected uint get_current_time();
@@ -13,12 +12,7 @@ namespace libunity.object_id {
       if (current_time < last_time) {
         throw new Exception("current time is little than last time");
       }
-      if (is_same_sec(current_time)) {
-        if (increment >= max_increment_count) {
-          throw new Exception("increment is overflow");
-        }
-      }
-      else {
+      if (current_time != last_time) {
         increment = 0;
       }
       increment++;
@@ -26,9 +20,6 @@ namespace libunity.object_id {
       return increment;
     }
 
-    private bool is_same_sec(double time) {
-      return time == last_time;
-    }
 
     public uint get_last_inc_time() {
       return last_time;

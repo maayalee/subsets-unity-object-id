@@ -7,7 +7,7 @@ using UnityEngine;
 namespace libunity.tests.object_id {
   public class object_id_test : test_case {
     override protected void set_up() {
-      counter = new increment_counter(10);
+      counter = new increment_counter();
     }
 
     override protected void tear_down() {
