@@ -6,10 +6,10 @@ namespace libunity.object_id {
       this.max_increment_count = max_increment_count;
     }
 
-    abstract protected double get_current_time();
+    abstract protected uint get_current_time();
 
     public int inc() {
-      double current_time = get_current_time();
+      uint current_time = get_current_time();
       if (current_time < last_time) {
         throw new Exception("current time is little than last time");
       }
@@ -30,7 +30,7 @@ namespace libunity.object_id {
       return time == last_time;
     }
 
-    public double get_last_inc_time() {
+    public uint get_last_inc_time() {
       return last_time;
     }
 
@@ -39,7 +39,7 @@ namespace libunity.object_id {
     }
 
     private int increment = 0;
-    private double last_time = 0;
+    private uint last_time = 0;
     private int max_increment_count = 0;
   }
 }

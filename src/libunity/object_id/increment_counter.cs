@@ -7,8 +7,8 @@ namespace libunity.object_id {
       base(max_increment_counter) {
     }
 
-    protected override double get_current_time() {
-      return time.get_unixtimestamp();
+    protected override uint get_current_time() {
+      return Convert.ToUInt32(time.get_unixtimestamp());
     }
   }
 }
