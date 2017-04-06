@@ -9,7 +9,6 @@ namespace libunity.object_id {
     const int MACHINE_ID_BYTE = 3;
     const int PROCESS_ID_BYTE = 2;
     const int INCREMENT_COUNT_BYTE = 2;
-    const int TOTAL_BYTE = 12;
     const int MAX_INCREMENT_COUNT_PER_SEC = 65535;
 
     public object_id(counter counter) {
@@ -18,11 +17,16 @@ namespace libunity.object_id {
         throw new Exception("increment is overflow");
       }
 
-      binary = new byte[TOTAL_BYTE];
+      binary = new byte[get_total_size()];
       append_timestamp(counter.get_last_inc_time());
       append_machine_id();
       append_process_id();
       append_increment_count(Convert.ToUInt16(count));
+    }
+
+    private int get_total_size() {
+      return TIMESTAMP_BYTE + MACHINE_ID_BYTE + PROCESS_ID_BYTE + 
+        INCREMENT_COUNT_BYTE;
     }
 
     public object_id(string hex) {
