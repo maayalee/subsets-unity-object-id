@@ -46,11 +46,11 @@ namespace libunity.object_id {
         INCREMENT_COUNT_BYTE;
     } 
 
-    override public bool equal(id id) {
-      return id.to_string() == to_string();
+    public bool equals(id other) {
+      return other.to_string() == to_string();
     }
 
-    override public string to_string() {
+    public string to_string() {
       if (0 == cache_string.Length) {
         string result = BitConverter.ToString(binary);
         string[] parts = result.Split('-');
@@ -70,7 +70,7 @@ namespace libunity.object_id {
     }
 
     private void append_machine_id(string machine_name) {
-      string machine_name_hash = id.hash(machine_name);
+      string machine_name_hash = md5.hash(machine_name);
       Array.Copy(Encoding.UTF8.GetBytes(machine_name_hash), 0, binary, index, MACHINE_ID_BYTE);
       index += MACHINE_ID_BYTE;
     }

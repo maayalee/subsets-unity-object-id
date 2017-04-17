@@ -17,17 +17,17 @@ namespace libunity.tests.object_id {
     public void test_create_id() {
       libunity.object_id.object_id id = new object_id_builder(counter).build();
       assert(id.get_timestamp() == counter.get_last_inc_time());
-      assert(id.get_machine_id() == libunity.object_id.id.hash(Environment.MachineName).Substring(
+      assert(id.get_machine_id() == md5.hash(Environment.MachineName).Substring(
         0, 3));
       assert(id.get_process_id() == (ushort)System.Diagnostics.Process.GetCurrentProcess().Id);
 
       id = new object_id_builder(counter).machine_name("test").build();
       assert(id.get_timestamp() == counter.get_last_inc_time());
-      assert(id.get_machine_id() == libunity.object_id.id.hash("test").Substring(0, 3));
+      assert(id.get_machine_id() == md5.hash("test").Substring(0, 3));
 
       id = new object_id_builder(counter).machine_name("test").process_id(10).build();
       assert(id.get_timestamp() == counter.get_last_inc_time());
-      assert(id.get_machine_id() == libunity.object_id.id.hash("test").Substring(0, 3));
+      assert(id.get_machine_id() == md5.hash("test").Substring(0, 3));
       assert(id.get_process_id() == (ushort)10);
     }
 
@@ -36,7 +36,7 @@ namespace libunity.tests.object_id {
       libunity.object_id.object_id id = new object_id_builder(counter).build();
 
       libunity.object_id.object_id compare_id = new libunity.object_id.object_id(id.to_string());
-      assert(id.equal(compare_id), "Two id is equal");
+      assert(id.equals(compare_id), "Two id is equals");
       assert(id.get_timestamp() == compare_id.get_timestamp());
       assert(id.get_machine_id() == compare_id.get_machine_id());
       assert(id.get_process_id() == compare_id.get_process_id());
