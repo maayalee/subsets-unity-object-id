@@ -1,0 +1,16 @@
+{
+	"name":"libunity-object-id",
+	"description":"",
+	"version":"1.0.0",
+	"repositories": [
+		{ "url": "https://packagist.org", "type": "composer" },
+    {
+        "type":"vcs",
+        "url":"https://github.com/maayalee/libunity-core.git"
+    }
+	],
+  "require": {
+    "libunity-core":"dev-master"
+  },
+	"minimum-stability":"dev"
+}
