@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace libunity.object_id {
-  abstract public class counter {
-    public counter() {
+namespace LibUnity.ObjectID {
+  abstract public class Counter {
+    public Counter() {
     }
 
-    abstract protected uint get_current_time();
+    abstract protected uint GetCurrentTime();
 
-    public int inc() {
-      uint current_time = get_current_time();
+    public int Inc() {
+      uint current_time = GetCurrentTime();
       if (current_time < last_time) {
         throw new Exception("current time is little than last time");
       }
@@ -21,11 +21,11 @@ namespace libunity.object_id {
     }
 
 
-    public uint get_last_inc_time() {
+    public uint GetLastIncTime() {
       return last_time;
     }
 
-    public int get_increment() {
+    public int GetIncrement() {
       return increment;
     }
 
