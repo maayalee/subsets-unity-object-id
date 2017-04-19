@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using libunity.test;
+using LibUnity.Test;
 using libunity.object_id;
 using UnityEngine;
 
-namespace libunity.tests.object_id {
+namespace LibUnity.Tests.object_id {
   public class object_id_test : test_case {
     override protected void set_up() {
       counter = new increment_counter();
