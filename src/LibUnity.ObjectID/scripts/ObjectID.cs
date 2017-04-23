@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 
 namespace LibUnity.ObjectID {
-  public class ObjectID : ID {
+  public class ObjectID : IDBase {
     const int TIMESTAMP_BYTE = 4;
     const int MACHINE_ID_BYTE = 3;
     const int PROCESS_ID_BYTE = 2;
@@ -46,7 +46,7 @@ namespace LibUnity.ObjectID {
         INCREMENT_COUNT_BYTE;
     } 
 
-    public bool Equals(ID other) {
+    public bool Equals(IDBase other) {
       return other.ToString() == ToString();
     }
 
