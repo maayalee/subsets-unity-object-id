@@ -1,8 +1,8 @@
 ﻿using System;
-using LibUnity.Test;
+using LibUnity.UnitTest;
 using LibUnity.ObjectID;
 
-namespace LibUnity.Tests.ObjectID {
+namespace LibUnity.UnitTests.ObjectID {
   public class ObjectIDTest : TestCase {
     override protected void SetUp() {
       counter = new IncrementCounter();

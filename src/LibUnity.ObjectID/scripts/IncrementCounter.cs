@@ -1,5 +1,5 @@
 ﻿using System;
-using LibUnity.Core;
+using LibUnity.DataStore;
 
 namespace LibUnity.ObjectID {
   public class IncrementCounter : Counter {
