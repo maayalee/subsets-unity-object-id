@@ -42,8 +42,7 @@ namespace LibUnity.ObjectID {
     }
 
     private int GetTotalSize() {
-      return TIMESTAMP_BYTE + MACHINE_ID_BYTE + PROCESS_ID_BYTE + 
-        INCREMENT_COUNT_BYTE;
+      return TIMESTAMP_BYTE + MACHINE_ID_BYTE + PROCESS_ID_BYTE + INCREMENT_COUNT_BYTE;
     } 
 
     public bool Equals(IDBase other) {
