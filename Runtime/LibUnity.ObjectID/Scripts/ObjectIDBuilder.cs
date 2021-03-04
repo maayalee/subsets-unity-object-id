@@ -6,12 +6,12 @@ namespace LibUnity.ObjectID {
     }
 
     public ObjectIDBuilder MachineName(string name) {
-      _machine_name = name;
+      machineName = name;
       return this;
     }
 
     public ObjectIDBuilder ProcessID(int id) {
-      _process_id = id;
+      processID = id;
       return this;
     }
 
@@ -20,11 +20,11 @@ namespace LibUnity.ObjectID {
     }
 
     public string GetMachineName() {
-      return _machine_name;
+      return machineName;
     }
 
     public int GetProcessID() {
-      return _process_id;
+      return processID;
     }
 
     public ObjectID Build() {
@@ -32,7 +32,7 @@ namespace LibUnity.ObjectID {
     }
 
     private Counter counter;
-    private string _machine_name = "";
-    private int _process_id = 0;
+    private string machineName = "";
+    private int processID = 0;
   }
 }

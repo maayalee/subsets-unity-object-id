@@ -50,16 +50,16 @@ namespace LibUnity.ObjectID {
     }
 
     override public string ToString() {
-      if (0 == cache_string.Length) {
+      if (0 == cacheString.Length) {
         string result = BitConverter.ToString(binary);
         string[] parts = result.Split('-');
         StringBuilder sb = new StringBuilder();
         foreach (string part in parts) {
           sb.Append(part);
         }
-        cache_string = sb.ToString();
+        cacheString = sb.ToString();
       }
-      return cache_string;
+      return cacheString;
     }
 
     private void AppendTimestamp(uint time) {
@@ -102,7 +102,7 @@ namespace LibUnity.ObjectID {
     }
 
     private int index = 0;
-    private string cache_string = "";
+    private string cacheString = "";
     private byte[] binary;
   }
 }

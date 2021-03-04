@@ -1,0 +1,17 @@
+{
+    "name": "LibUnity.ObjectIDTest",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d3143601704a03b4b9fba19c5c03c155",
+        "GUID:d483efb6a4330be42ac4d983ab25b349"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
